@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Gemini Article Summarizer</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <h1>Article Summarizer (Gemini 2.0 Flash)</h1>
+    <textarea
+      id="articleText"
+      rows="12"
+      cols="80"
+      placeholder="Paste your article text here..."
+    ></textarea>
+    <br />
+    <button onclick="summarizeArticle()">Summarize</button>
+    <h2>Summary:</h2>
+    <div id="summary" style="white-space: pre-wrap"></div>
+
+    <script>
+      const API_KEY = "AIzaSyB6mydORnKG2N52wDHRmsfzSiEy_rNVxyM";
+
+      async function summarizeArticle() {
+        const input = document.getElementById("articleText").value;
+        const output = document.getElementById("summary");
+
+        if (!input.trim()) {
+          output.innerText = "Please paste an article to summarize.";
+          return;
+        }
+
+        output.innerText = "Summarizing...";
+
+        try {
+          const res = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${API_KEY}`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                contents: [
+                  {
+                    parts: [
+                      {
+                        text: `Summarize the following article in a clear, concise paragraph:\n\n${input}`,
+                      },
+                    ],
+                  },
+                ],
+              }),
+            }
+          );
+
+          const data = await res.json();
+
+          const summary =
+            data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+            "No summary generated.";
+          output.innerText = summary;
+        } catch (err) {
+          output.innerText = `❌ Error: ${err.message}`;
+        }
+      }
+    </script>
+  </body>
+</html>

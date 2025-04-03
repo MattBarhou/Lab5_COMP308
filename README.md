@@ -1,6 +1,4 @@
-
-
-```markdown
+````markdown
 # 🧠 Gemini Article Summarizer — Lab 5 (COMP308)
 
 This project is a simple, browser-based **article summarizer** that uses the **Gemini 2.0 Flash API**. Built as part of Lab 5 for COMP308, it helps users summarize long-form articles using Google's generative AI technology.
@@ -25,6 +23,7 @@ GitHub Repo: [MattBarhou/Lab5_COMP308](https://github.com/MattBarhou/Lab5_COMP30
 git clone https://github.com/MattBarhou/Lab5_COMP308.git
 cd Lab5_COMP308
 ```
+````
 
 ### 2. Open `index.html`
 
@@ -57,7 +56,12 @@ with your own [Gemini API key](https://ai.google.dev/).
 ## 📄 Code Overview
 
 ```html
-<textarea id="articleText" rows="12" cols="80" placeholder="Paste your article text here..."></textarea>
+<textarea
+  id="articleText"
+  rows="12"
+  cols="80"
+  placeholder="Paste your article text here..."
+></textarea>
 <button onclick="summarizeArticle()">Summarize</button>
 
 <script>
@@ -81,15 +85,21 @@ with your own [Gemini API key](https://ai.google.dev/).
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            contents: [{
-              parts: [{ text: `Summarize the following article:\n\n${input}` }]
-            }],
+            contents: [
+              {
+                parts: [
+                  { text: `Summarize the following article:\n\n${input}` },
+                ],
+              },
+            ],
           }),
         }
       );
 
       const data = await res.json();
-      const summary = data?.candidates?.[0]?.content?.parts?.[0]?.text || "No summary generated.";
+      const summary =
+        data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+        "No summary generated.";
       output.innerText = summary;
     } catch (err) {
       output.innerText = `❌ Error: ${err.message}`;
