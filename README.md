@@ -1,21 +1,15 @@
-````markdown
-# 🧠 Gemini Article Summarizer — Lab 5 (COMP308)
+## 📖 Project Overview
+This repository contains a browser-based article summarization tool built using the Gemini 2.0 Flash API. Developed for Lab 5 of COMP308, the application allows users to input long-form text and receive a concise AI-generated summary. It focuses on summarizing recent articles related to the environmental impact of generative AI.
 
-This project is a simple, browser-based **article summarizer** that uses the **Gemini 2.0 Flash API**. Built as part of Lab 5 for COMP308, it helps users summarize long-form articles using Google's generative AI technology.
 
-GitHub Repo: [MattBarhou/Lab5_COMP308](https://github.com/MattBarhou/Lab5_COMP308)
+## 🎯 Project Objectives
+Build a working summarizer using Gemini API.
 
----
+Analyze articles discussing the environmental cost of generative AI.
 
-## 📌 Objective
+Provide references and a one-page summary using a large language model (LLM).
 
-- Build a working summarizer using Gemini
-- Summarize current articles related to the environmental impact of generative AI
-- Include references and a one-page summary using AI
-
----
-
-## 🔧 How to Run
+## 🛠️ How to Run
 
 ### 1. Clone the Repository
 
@@ -23,7 +17,7 @@ GitHub Repo: [MattBarhou/Lab5_COMP308](https://github.com/MattBarhou/Lab5_COMP30
 git clone https://github.com/MattBarhou/Lab5_COMP308.git
 cd Lab5_COMP308
 ```
-````
+
 
 ### 2. Open `index.html`
 
